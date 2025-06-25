@@ -10,7 +10,7 @@ class AppTextStyles {
 
   static const TextStyle subheading = TextStyle(
     fontSize: 18,
-    fontWeight: FontWeight.w600,
+    fontWeight: FontWeight.w300,
     color: AppColors.textSecondary,
   );
 

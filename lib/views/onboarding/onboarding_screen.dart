@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../core/constants/app_colors.dart';
-//import '../auth/login_screen.dart';
+import '../auth/login_screen.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -39,10 +39,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         curve: Curves.easeIn,
       );
     } else {
-      // Navigator.pushReplacement(
-      //   context,
-      //   MaterialPageRoute(builder: (_) => const LoginScreen()),
-      // );
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => const LoginScreen()),
+      );
     }
   }
 
@@ -67,7 +67,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image.asset(page['image']!, height: 250),
-                      // const SizedBox(height: 10),
                       Text(
                         page['title']!,
                         style: const TextStyle(
@@ -76,7 +75,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         ),
                         textAlign: TextAlign.center,
                       ),
-                      //const SizedBox(height: 20),
                       Text(
                         page['subtitle']!,
                         style: const TextStyle(
