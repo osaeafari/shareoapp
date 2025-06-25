@@ -19,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen>
     super.initState();
 
     _controller = AnimationController(
-      duration: const Duration(seconds: 1),
+      duration: const Duration(seconds: 2),
       vsync: this,
     );
 
@@ -27,7 +27,7 @@ class _SplashScreenState extends State<SplashScreen>
 
     _controller.forward(); // start animation
 
-    Future.delayed(const Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 4), () {
       Navigator.of(context).pushReplacement(
         PageRouteBuilder(
           transitionDuration: const Duration(milliseconds: 1000),

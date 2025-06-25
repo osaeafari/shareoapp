@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../core/constants/app_colors.dart';
 import 'register_screen.dart';
+import '../home/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -11,7 +12,31 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
   bool _obscurePassword = true;
+
+  final String dummyEmail = 'user@shareoapp.com';
+  final String dummyPassword = 'password123';
+
+  void _handleLogin() {
+    if (_formKey.currentState!.validate()) {
+      if (_emailController.text == dummyEmail &&
+          _passwordController.text == dummyPassword) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(const SnackBar(content: Text('Login Successful')));
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (_) => const HomeScreen()),
+        );
+      } else {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(const SnackBar(content: Text('Invalid credentials')));
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,11 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               const SizedBox(height: 20),
               ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    // perform login action
-                  }
-                },
+                onPressed: _handleLogin,
                 child: const Text('Login'),
               ),
               //const SizedBox(height: 10),
