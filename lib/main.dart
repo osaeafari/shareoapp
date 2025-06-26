@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shareoapp/views/home/home_screen.dart';
 import 'core/constants/app_colors.dart';
 import 'core/constants/app_text_styles.dart';
 import 'views/splash/splash_screen.dart'; // Create this later
@@ -30,7 +31,7 @@ class ShareoApp extends StatelessWidget {
           foregroundColor: Colors.white,
         ),
       ),
-      home: const SplashScreen(), // we'll build this next
+      home: const SplashScreen(),
     );
   }
 }

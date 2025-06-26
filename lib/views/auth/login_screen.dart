@@ -51,6 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(height: 120),
               Image.asset('assets/images/ShareoappLogo.jpg', height: 200),
               TextFormField(
+                controller: _emailController,
                 decoration: const InputDecoration(labelText: 'Email'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -61,6 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               const SizedBox(height: 12),
               TextFormField(
+                controller: _passwordController,
                 obscureText: _obscurePassword,
                 decoration: InputDecoration(
                   labelText: 'Password',
