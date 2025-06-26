@@ -31,7 +31,7 @@ class ShareoApp extends StatelessWidget {
           foregroundColor: Colors.white,
         ),
       ),
-      home: const SplashScreen(),
+      home: const HomeScreen(),
     );
   }
 }
