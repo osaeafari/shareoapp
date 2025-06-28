@@ -24,4 +24,15 @@ class AppTextStyles {
     fontSize: 12,
     color: AppColors.textSecondary,
   );
+
+  static const TextStyle brandtitle = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+    color: AppColors.textPrimary,
+  );
+
+  static const TextStyle brandtext = TextStyle(
+    fontSize: 12,
+    color: AppColors.textSecondary,
+  );
 }

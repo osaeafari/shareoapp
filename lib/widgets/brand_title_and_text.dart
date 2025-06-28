@@ -19,7 +19,7 @@ class BrandTitleAndText extends StatelessWidget {
           ),
         ),
         Text(
-          'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...',
+          'Neque porro quisquam est qui dolorem, consectetur, adipisci velit...',
           style: TextStyle(
             fontSize: 12,
             fontWeight: FontWeight.w300,
