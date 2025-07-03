@@ -3,17 +3,29 @@ import 'package:shareoapp/widgets/location_searchbar.dart';
 import '../core/constants/app_colors.dart';
 
 class ShareoAppbar extends StatelessWidget implements PreferredSizeWidget {
-  const ShareoAppbar({super.key});
+  final String? title;
+  final bool showBack;
+  final bool showBottom;
+  final double preferredHeight;
+
+  const ShareoAppbar({
+    super.key,
+    this.title,
+    this.showBack = false,
+    this.showBottom = true,
+    this.preferredHeight = 180,
+  });
 
   final String userName = 'Kay_Kross';
 
   @override
-  Size get preferredSize => const Size.fromHeight(180);
+  Size get preferredSize => Size.fromHeight(preferredHeight);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      toolbarHeight: 100,
+      automaticallyImplyLeading: false,
+      toolbarHeight: showBottom ? 50 : 50,
       backgroundColor: AppColors.primary,
       shadowColor: Theme.of(context).shadowColor,
       title: Padding(
@@ -26,32 +38,52 @@ class ShareoAppbar extends StatelessWidget implements PreferredSizeWidget {
               children: [
                 Row(
                   children: [
-                    const CircleAvatar(
-                      radius: 24,
-                      backgroundImage: AssetImage(
-                        'assets/images/profilePic.jpg',
+                    if (showBack)
+                      IconButton(
+                        icon: const Icon(
+                          Icons.arrow_back,
+                          color: AppColors.background,
+                        ),
+                        onPressed: () => Navigator.of(context).maybePop(),
                       ),
-                    ),
+                    if (!showBack)
+                      const CircleAvatar(
+                        radius: 24,
+                        backgroundImage: AssetImage(
+                          'assets/images/profilePic.jpg',
+                        ),
+                      ),
                     const SizedBox(width: 12),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
-                          'Welcome back',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w700,
-                            color: AppColors.background,
+                        if (title != null)
+                          Text(
+                            title!,
+                            style: const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                              color: AppColors.background,
+                            ),
                           ),
-                        ),
-                        Text(
-                          userName,
-                          style: const TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w300,
-                            color: AppColors.background,
+                        if (title == null)
+                          const Text(
+                            'Welcome back',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w700,
+                              color: AppColors.background,
+                            ),
                           ),
-                        ),
+                        if (!showBack && title == null)
+                          Text(
+                            userName,
+                            style: const TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w300,
+                              color: AppColors.background,
+                            ),
+                          ),
                       ],
                     ),
                   ],
@@ -81,13 +113,16 @@ class ShareoAppbar extends StatelessWidget implements PreferredSizeWidget {
           ],
         ),
       ),
-      bottom: PreferredSize(
-        preferredSize: const Size.fromHeight(100),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
-          child: LocationSearchbar(),
-        ),
-      ),
+      bottom:
+          showBottom
+              ? PreferredSize(
+                preferredSize: const Size.fromHeight(100),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  child: LocationSearchbar(),
+                ),
+              )
+              : null,
     );
   }
 }
