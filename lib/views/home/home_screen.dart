@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:shareoapp/views/points/points_screen.dart';
 import 'package:shareoapp/views/search/settings_screen.dart';
+import 'package:shareoapp/widgets/general_appbar.dart';
 import 'home_content.dart';
-import '../../widgets/appbar.dart';
+import '../../widgets/home_appbar.dart';
 import '../../widgets/bottom_navbar.dart';
 import '../analytics/analytics_screen.dart';
 
@@ -32,11 +33,10 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: ShareoAppbar(
-        title: _titles[_currentIndex],
-        showBack: _currentIndex != 0,
-        showBottom: _currentIndex == 0,
-      ),
+      appBar:
+          _currentIndex == 0
+              ? const HomeAppbar()
+              : GeneralAppbar(title: _titles[_currentIndex] ?? ''),
 
       body: SafeArea(
         child: IndexedStack(

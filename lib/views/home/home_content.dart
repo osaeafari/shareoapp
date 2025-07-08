@@ -12,13 +12,18 @@ import '../../widgets/slider_dots.dart';
 import '../../widgets/special_for_you_slider.dart';
 import '../../widgets/special_for_you_text.dart';
 
-class HomeContent extends StatelessWidget {
+class HomeContent extends StatefulWidget {
   const HomeContent({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    int currentSlide = 0;
+  State<HomeContent> createState() => _HomeContentState();
+}
 
+class _HomeContentState extends State<HomeContent> {
+  int _currentSlide = 0;
+
+  @override
+  Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -27,7 +32,9 @@ class HomeContent extends StatelessWidget {
           SpecialForYouText(),
           SpecialForYouSlider(
             onPageChanged: (index) {
-              // This won't update currentSlide because StatelessWidget has no state
+              setState(() {
+                _currentSlide = index;
+              });
             },
           ),
           const SizedBox(height: 8),
@@ -36,7 +43,7 @@ class HomeContent extends StatelessWidget {
             children: List.generate(
               3,
               (index) =>
-                  SliderDots(currentSlide: currentSlide, dotIndex: index),
+                  SliderDots(currentSlide: _currentSlide, dotIndex: index),
             ),
           ),
 
