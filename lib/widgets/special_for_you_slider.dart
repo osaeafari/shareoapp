@@ -14,7 +14,7 @@ class _SpecialForYouSliderState extends State<SpecialForYouSlider> {
   final PageController _pageController = PageController();
 
   // ignore: unused_field
-  int _currentPage = 0;
+  final int _currentPage = 0;
 
   final List<String> offerImages = [
     'assets/images/sp1.jpg',

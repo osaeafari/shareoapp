@@ -9,8 +9,9 @@ void main() {
 }
 
 class ShareoApp extends StatelessWidget {
-  ShareoApp({super.key});
+  const ShareoApp({super.key});
 
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Shareoapp',

@@ -12,7 +12,7 @@ class BrandButtons extends StatelessWidget {
       children: [
         TextButton(
           style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(
+            backgroundColor: WidgetStateProperty.all(
               AppColors.primary.withOpacity(0.1),
             ),
           ),
