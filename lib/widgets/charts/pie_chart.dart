@@ -18,30 +18,50 @@ class PieChartSample3State extends State {
   Widget build(BuildContext context) {
     return AspectRatio(
       aspectRatio: 1.3,
-      child: AspectRatio(
-        aspectRatio: 1,
-        child: PieChart(
-          PieChartData(
-            pieTouchData: PieTouchData(
-              touchCallback: (FlTouchEvent event, pieTouchResponse) {
-                setState(() {
-                  if (!event.isInterestedForInteractions ||
-                      pieTouchResponse == null ||
-                      pieTouchResponse.touchedSection == null) {
-                    touchedIndex = -1;
-                    return;
-                  }
-                  touchedIndex =
-                      pieTouchResponse.touchedSection!.touchedSectionIndex;
-                });
-              },
+      child: Column(
+        children: [
+          const SizedBox(height: 10),
+          const Text(
+            'Pie Chart',
+            style: TextStyle(
+              color: AppColors.primary,
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 2,
             ),
-            borderData: FlBorderData(show: false),
-            sectionsSpace: 0,
-            centerSpaceRadius: 0,
-            sections: showingSections(),
+            textAlign: TextAlign.center,
           ),
-        ),
+          const SizedBox(height: 10),
+          Expanded(
+            child: AspectRatio(
+              aspectRatio: 1,
+              child: PieChart(
+                PieChartData(
+                  pieTouchData: PieTouchData(
+                    touchCallback: (FlTouchEvent event, pieTouchResponse) {
+                      setState(() {
+                        if (!event.isInterestedForInteractions ||
+                            pieTouchResponse == null ||
+                            pieTouchResponse.touchedSection == null) {
+                          touchedIndex = -1;
+                          return;
+                        }
+                        touchedIndex =
+                            pieTouchResponse
+                                .touchedSection!
+                                .touchedSectionIndex;
+                      });
+                    },
+                  ),
+                  borderData: FlBorderData(show: false),
+                  sectionsSpace: 0,
+                  centerSpaceRadius: 0,
+                  sections: showingSections(),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -49,9 +69,9 @@ class PieChartSample3State extends State {
   List<PieChartSectionData> showingSections() {
     return List.generate(4, (i) {
       final isTouched = i == touchedIndex;
-      final fontSize = isTouched ? 20.0 : 16.0;
-      final radius = isTouched ? 160.0 : 140.0;
-      final widgetSize = isTouched ? 70.0 : 60.0;
+      final fontSize = isTouched ? 22.0 : 16.0;
+      final radius = isTouched ? 110.0 : 100.0;
+      final widgetSize = isTouched ? 55.0 : 40.0;
       const shadows = [Shadow(color: Colors.black, blurRadius: 2)];
 
       switch (i) {
@@ -64,7 +84,7 @@ class PieChartSample3State extends State {
             titleStyle: TextStyle(
               fontSize: fontSize,
               fontWeight: FontWeight.bold,
-              color: Colors.white,
+              color: const Color.fromARGB(255, 106, 4, 4),
               shadows: shadows,
             ),
             badgeWidget: _Badge(
@@ -83,7 +103,7 @@ class PieChartSample3State extends State {
             titleStyle: TextStyle(
               fontSize: fontSize,
               fontWeight: FontWeight.bold,
-              color: Colors.white,
+              color: const Color.fromARGB(255, 116, 3, 3),
               shadows: shadows,
             ),
             badgeWidget: _Badge(
@@ -102,7 +122,7 @@ class PieChartSample3State extends State {
             titleStyle: TextStyle(
               fontSize: fontSize,
               fontWeight: FontWeight.bold,
-              color: Colors.white,
+              color: const Color.fromARGB(255, 119, 4, 4),
               shadows: shadows,
             ),
             badgeWidget: _Badge(
@@ -121,7 +141,7 @@ class PieChartSample3State extends State {
             titleStyle: TextStyle(
               fontSize: fontSize,
               fontWeight: FontWeight.bold,
-              color: Colors.white,
+              color: const Color.fromARGB(255, 114, 3, 3),
               shadows: shadows,
             ),
             badgeWidget: _Badge(
@@ -151,12 +171,12 @@ class _Badge extends StatelessWidget {
       width: size,
       height: size,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Colors.black,
         shape: BoxShape.circle,
         border: Border.all(color: borderColor, width: 2),
         boxShadow: <BoxShadow>[
           BoxShadow(
-            color: Colors.black.withValues(alpha: .5),
+            color: Colors.black.withOpacity(.5),
             offset: const Offset(3, 3),
             blurRadius: 3,
           ),

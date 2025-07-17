@@ -291,18 +291,18 @@ class LineChartSample1State extends State<LineChartSample1> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              const SizedBox(height: 37),
+              const SizedBox(height: 8),
               const Text(
                 'Monthly Sales',
                 style: TextStyle(
                   color: AppColors.primary,
-                  fontSize: 32,
+                  fontSize: 24,
                   fontWeight: FontWeight.bold,
                   letterSpacing: 2,
                 ),
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 37),
+              const SizedBox(height: 10),
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.only(right: 16, left: 6),
@@ -315,7 +315,7 @@ class LineChartSample1State extends State<LineChartSample1> {
           IconButton(
             icon: Icon(
               Icons.refresh,
-              color: Colors.white.withValues(
+              color: AppColors.primary.withValues(
                 alpha: isShowingMainData ? 1.0 : 0.5,
               ),
             ),

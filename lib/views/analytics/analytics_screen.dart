@@ -1,5 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:shareoapp/core/constants/app_colors.dart';
 import 'package:shareoapp/widgets/charts/line_chart.dart';
 
 class AnalyticsScreen extends StatelessWidget {
@@ -32,7 +33,7 @@ class AnalyticsScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           LineChartSample1(),
-          const SizedBox(height: 70),
+          const SizedBox(height: 40),
           SizedBox(
             height: 200,
             child: PieChart(
