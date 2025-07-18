@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shareoapp/views/brands/new_brands_screen.dart';
 
 class ExpandableFab extends StatefulWidget {
   const ExpandableFab({super.key});
@@ -23,11 +24,6 @@ class _ExpandableFabState extends State<ExpandableFab> {
                 _isExpanded = false;
               });
             },
-            child: Container(
-              //color: Colors.black54,
-              //width: MediaQuery.of(context).size.width,
-              //height: MediaQuery.of(context).size.height,
-            ),
           ),
 
         // Main FAB
@@ -38,7 +34,7 @@ class _ExpandableFabState extends State<ExpandableFab> {
   }
 
   Widget _buildMainFab() {
-    return FloatingActionButton.large(
+    return FloatingActionButton(
       onPressed: () {
         setState(() {
           _isExpanded = !_isExpanded;
@@ -52,24 +48,40 @@ class _ExpandableFabState extends State<ExpandableFab> {
   List<Widget> _buildExpandedOptions() {
     return [
       Positioned(
-        bottom: 110,
+        bottom: 60,
         right: 0,
         child: AnimatedOpacity(
           opacity: _isExpanded ? 1.0 : 0.0,
           duration: const Duration(milliseconds: 300),
-          child: FloatingActionButton(
-            onPressed: () {},
+          child: FloatingActionButton.small(
+            onPressed: () {
+              // first , collapse the FAB
+              setState(() {
+                _isExpanded = false;
+              });
+              // then, navigate to the new screen.
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const NewBrandsScreen(),
+                ),
+              );
+            },
             child: Icon(Icons.border_color_outlined),
           ),
         ),
       ),
 
       Positioned(
-        bottom: 180,
+        bottom: 110,
         right: 0,
-        child: FloatingActionButton(
-          onPressed: () {},
-          child: Icon(Icons.amp_stories),
+        child: AnimatedOpacity(
+          opacity: _isExpanded ? 1.0 : 0.0,
+          duration: const Duration(milliseconds: 300),
+          child: FloatingActionButton.small(
+            onPressed: () {},
+            child: Icon(Icons.amp_stories_outlined),
+          ),
         ),
       ),
     ];
